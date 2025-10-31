@@ -9,16 +9,12 @@ import java.sql.*;
  
         try{ 
  
-        // Load Oracle JDBC driver 
         Class.forName("com.mysql.cj.jdbc.Driver"); 
  
-        // Connect to Oracle database 
         Connection con = DriverManager.getConnection(url, user, password); 
  
-        // Create a scrollable, read-only ResultSet 
         Statement st = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY); 
  
-        // Execute query on Student table 
         ResultSet rs = st.executeQuery("SELECT * FROM Student"); 
  
         System.out.println("Records in Forward Direction:"); 
@@ -45,7 +41,6 @@ import java.sql.*;
             ); 
         } 
  
-        // First record 
         rs.first(); 
         System.out.println("\nFirst Record:"); 
         System.out.println( 
@@ -55,7 +50,6 @@ import java.sql.*;
             rs.getString("Address") 
         ); 
  
-        // Last record 
         rs.last(); 
         System.out.println("\nLast Record:"); 
         System.out.println( 
@@ -65,7 +59,6 @@ import java.sql.*;
             rs.getString("Address") 
         ); 
  
-        // 2nd record from last 
         rs.relative(-1); 
         System.out.println("\n2nd Record from Last:"); 
         System.out.println( 
@@ -75,7 +68,6 @@ import java.sql.*;
             rs.getString("Address") 
         ); 
  
-        // 2nd record from beginning 
         rs.absolute(2); 
         System.out.println("\n2nd Record from Beginning:"); 
         System.out.println( 
@@ -84,7 +76,6 @@ import java.sql.*;
             rs.getString("Name") + "\t\t" + 
             rs.getString("Address") 
         ); 
-        // Close connection 
         con.close(); 
     } catch (Exception e) {
                          e.printStackTrace();
